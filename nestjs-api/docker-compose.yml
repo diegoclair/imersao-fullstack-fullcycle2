@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    entrypoint: ./.docker/entrypoint.sh
+    ports:
+      - 3000:3000
+    environment:
+      WAIT_HOSTS: db_fin:3306
+      WAIT_HOSTS_TIMEOUT: 300
+      WAIT_SLEEP_INTERVAL: 10
+      WAIT_HOST_CONNECT_TIMEOUT: 30
+    volumes: 
+      - .:/home/node/app
+    depends_on: 
+      - db_fin
+    
+  db_fin: 
+    build: ./.docker/mysql
+    restart: always
+    tty: true
+    command: --innodb-use-native-aio=0
+    cap_add:
+      - SYS_NICE  # CAP_SYS_NICE - this is to not show the error 'mbind: Operation not permitted' in database docker log
+    volumes:
+      - ./.docker/dbdata:/var/lib/mysql
+    environment: 
+      - MYSQL_DATABASE=fin
+      - MYSQL_ROOT_PASSWORD=root

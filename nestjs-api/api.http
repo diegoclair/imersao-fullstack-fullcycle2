@@ -1,0 +1,71 @@
+### ======================================
+### KeyCloak authentication
+### ======================================
+POST http://localhost:8080/auth/realms/fincycle/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=nest
+&client_secret=2399c5a2-4d8d-4ca7-889b-85f4b8b41abb
+&grant_type=password
+&username=user1@user.com
+&password=123456
+
+### ======================================
+### Accounts
+### ======================================
+POST http://localhost:3000/accounts
+Content-Type: application/json
+
+{
+  "name": "Account 1",
+  "subdomain": "tenant1"
+}
+
+###
+GET http://localhost:3000/accounts
+
+### ======================================
+### Transactions
+### ======================================
+GET http://localhost:3000/transactions
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJLSjN5MW5PNlFsRkt2YmhDbV91OTlxNDJ0TlBoTDgwdks1NEwxZGpCTi00In0.eyJleHAiOjE2MzE3OTQ1OTYsImlhdCI6MTYzMTc1ODU5NiwianRpIjoiZWFjNzRhNjQtYTliYy00NjEzLWJkMDUtMGQ3NGI1MDFjNTc3IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL2ZpbmN5Y2xlIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjNjN2RkNzgzLTRjMjYtNGFjNi05MTQ5LTg1YzEzZDNhZjI3NCIsInR5cCI6IkJlYXJlciIsImF6cCI6Im5lc3QiLCJzZXNzaW9uX3N0YXRlIjoiZjRkMTIyMDQtNjZjMS00NTdkLWI0YTUtZTBjNDc0NDZiNTJkIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgwMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLWZpbmN5Y2xlIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwic2lkIjoiZjRkMTIyMDQtNjZjMS00NTdkLWI0YTUtZTBjNDc0NDZiNTJkIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJVc2VyMSBMYXN0IE5hbWUiLCJzdWJkb21haW4iOiJ0ZW5hbnQxIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjFAdXNlci5jb20iLCJnaXZlbl9uYW1lIjoiVXNlcjEiLCJmYW1pbHlfbmFtZSI6Ikxhc3QgTmFtZSIsImVtYWlsIjoidXNlcjFAdXNlci5jb20ifQ.ArV6rkJm7wvG3rzB1ZmtarNE1aLSmD0TD6LVdUGdtLGnveiupIBXYplC3kthOLKI1NTB8tADK7nfNhPTwD_0F77HJgRxmfFZR_YDRg2UeZo_SDZkLhUR4zcec5uk0t-RRSzriHUYPP6LJyQ_ftLRbMt0RwhGF-5Oj5EA1KyFMKIUt9Xx5eMq2wpzYRnyFnBnMn-H4CmL-D6SeIIkWbDWTqjQgXVrK_yg7WEXRJNmclx0yeC0qjvLwvyeD2HruUTT53d_kK_AIu3l3Z05hRfIhCV52sgFZWXmAJYwoLBnP9h5600StlWdjDl5vm4a8tbadLA8QKk5WrcOlIWGlz53yg
+
+###
+POST http://localhost:3000/transactions
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJLSjN5MW5PNlFsRkt2YmhDbV91OTlxNDJ0TlBoTDgwdks1NEwxZGpCTi00In0.eyJleHAiOjE2MzE3OTQ1OTYsImlhdCI6MTYzMTc1ODU5NiwianRpIjoiZWFjNzRhNjQtYTliYy00NjEzLWJkMDUtMGQ3NGI1MDFjNTc3IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL2ZpbmN5Y2xlIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjNjN2RkNzgzLTRjMjYtNGFjNi05MTQ5LTg1YzEzZDNhZjI3NCIsInR5cCI6IkJlYXJlciIsImF6cCI6Im5lc3QiLCJzZXNzaW9uX3N0YXRlIjoiZjRkMTIyMDQtNjZjMS00NTdkLWI0YTUtZTBjNDc0NDZiNTJkIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgwMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLWZpbmN5Y2xlIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwic2lkIjoiZjRkMTIyMDQtNjZjMS00NTdkLWI0YTUtZTBjNDc0NDZiNTJkIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJVc2VyMSBMYXN0IE5hbWUiLCJzdWJkb21haW4iOiJ0ZW5hbnQxIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjFAdXNlci5jb20iLCJnaXZlbl9uYW1lIjoiVXNlcjEiLCJmYW1pbHlfbmFtZSI6Ikxhc3QgTmFtZSIsImVtYWlsIjoidXNlcjFAdXNlci5jb20ifQ.ArV6rkJm7wvG3rzB1ZmtarNE1aLSmD0TD6LVdUGdtLGnveiupIBXYplC3kthOLKI1NTB8tADK7nfNhPTwD_0F77HJgRxmfFZR_YDRg2UeZo_SDZkLhUR4zcec5uk0t-RRSzriHUYPP6LJyQ_ftLRbMt0RwhGF-5Oj5EA1KyFMKIUt9Xx5eMq2wpzYRnyFnBnMn-H4CmL-D6SeIIkWbDWTqjQgXVrK_yg7WEXRJNmclx0yeC0qjvLwvyeD2HruUTT53d_kK_AIu3l3Z05hRfIhCV52sgFZWXmAJYwoLBnP9h5600StlWdjDl5vm4a8tbadLA8QKk5WrcOlIWGlz53yg
+Content-Type: application/json
+
+{
+  "payment_date": "2021-01-01",
+  "name": "Nova transaction 1",
+  "description": "Descrição",
+  "category": "category1",
+  "amount": 35,
+  "type": "debit"
+}
+
+### Wrong transaction example
+POST http://localhost:3000/transactions
+Content-Type: application/json
+
+{
+  "payment_date": "2021-01-01",
+  "name": "Nova conta 1",
+  "description": "Descrição"
+}
+
+### ======================================
+### Reports
+### ======================================
+GET http://localhost:3000/reports
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJLSjN5MW5PNlFsRkt2YmhDbV91OTlxNDJ0TlBoTDgwdks1NEwxZGpCTi00In0.eyJleHAiOjE2MzE3OTQ1OTYsImlhdCI6MTYzMTc1ODU5NiwianRpIjoiZWFjNzRhNjQtYTliYy00NjEzLWJkMDUtMGQ3NGI1MDFjNTc3IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL2ZpbmN5Y2xlIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjNjN2RkNzgzLTRjMjYtNGFjNi05MTQ5LTg1YzEzZDNhZjI3NCIsInR5cCI6IkJlYXJlciIsImF6cCI6Im5lc3QiLCJzZXNzaW9uX3N0YXRlIjoiZjRkMTIyMDQtNjZjMS00NTdkLWI0YTUtZTBjNDc0NDZiNTJkIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgwMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLWZpbmN5Y2xlIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwic2lkIjoiZjRkMTIyMDQtNjZjMS00NTdkLWI0YTUtZTBjNDc0NDZiNTJkIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJVc2VyMSBMYXN0IE5hbWUiLCJzdWJkb21haW4iOiJ0ZW5hbnQxIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjFAdXNlci5jb20iLCJnaXZlbl9uYW1lIjoiVXNlcjEiLCJmYW1pbHlfbmFtZSI6Ikxhc3QgTmFtZSIsImVtYWlsIjoidXNlcjFAdXNlci5jb20ifQ.ArV6rkJm7wvG3rzB1ZmtarNE1aLSmD0TD6LVdUGdtLGnveiupIBXYplC3kthOLKI1NTB8tADK7nfNhPTwD_0F77HJgRxmfFZR_YDRg2UeZo_SDZkLhUR4zcec5uk0t-RRSzriHUYPP6LJyQ_ftLRbMt0RwhGF-5Oj5EA1KyFMKIUt9Xx5eMq2wpzYRnyFnBnMn-H4CmL-D6SeIIkWbDWTqjQgXVrK_yg7WEXRJNmclx0yeC0qjvLwvyeD2HruUTT53d_kK_AIu3l3Z05hRfIhCV52sgFZWXmAJYwoLBnP9h5600StlWdjDl5vm4a8tbadLA8QKk5WrcOlIWGlz53yg
+
+###
+POST http://localhost:3000/reports
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJLSjN5MW5PNlFsRkt2YmhDbV91OTlxNDJ0TlBoTDgwdks1NEwxZGpCTi00In0.eyJleHAiOjE2MzE3OTQ1OTYsImlhdCI6MTYzMTc1ODU5NiwianRpIjoiZWFjNzRhNjQtYTliYy00NjEzLWJkMDUtMGQ3NGI1MDFjNTc3IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL2ZpbmN5Y2xlIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjNjN2RkNzgzLTRjMjYtNGFjNi05MTQ5LTg1YzEzZDNhZjI3NCIsInR5cCI6IkJlYXJlciIsImF6cCI6Im5lc3QiLCJzZXNzaW9uX3N0YXRlIjoiZjRkMTIyMDQtNjZjMS00NTdkLWI0YTUtZTBjNDc0NDZiNTJkIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgwMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLWZpbmN5Y2xlIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwic2lkIjoiZjRkMTIyMDQtNjZjMS00NTdkLWI0YTUtZTBjNDc0NDZiNTJkIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJVc2VyMSBMYXN0IE5hbWUiLCJzdWJkb21haW4iOiJ0ZW5hbnQxIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjFAdXNlci5jb20iLCJnaXZlbl9uYW1lIjoiVXNlcjEiLCJmYW1pbHlfbmFtZSI6Ikxhc3QgTmFtZSIsImVtYWlsIjoidXNlcjFAdXNlci5jb20ifQ.ArV6rkJm7wvG3rzB1ZmtarNE1aLSmD0TD6LVdUGdtLGnveiupIBXYplC3kthOLKI1NTB8tADK7nfNhPTwD_0F77HJgRxmfFZR_YDRg2UeZo_SDZkLhUR4zcec5uk0t-RRSzriHUYPP6LJyQ_ftLRbMt0RwhGF-5Oj5EA1KyFMKIUt9Xx5eMq2wpzYRnyFnBnMn-H4CmL-D6SeIIkWbDWTqjQgXVrK_yg7WEXRJNmclx0yeC0qjvLwvyeD2HruUTT53d_kK_AIu3l3Z05hRfIhCV52sgFZWXmAJYwoLBnP9h5600StlWdjDl5vm4a8tbadLA8QKk5WrcOlIWGlz53yg
+Content-Type: application/json
+
+{
+  "start_date": "2021-01-01",
+  "end_date": "2021-01-02"
+}
