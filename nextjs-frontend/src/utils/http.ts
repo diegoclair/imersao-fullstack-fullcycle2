@@ -11,7 +11,7 @@ const makeHttp = (token?: string): AxiosInstance => {
     throw new Error("The access token must be provided");
   }
 
-  http.interceptors.request.use((request: any) => {
+  http.interceptors.request.use((request) => {
     if (process.browser) {
       return addTokenByKeycloak(request);
     } else {

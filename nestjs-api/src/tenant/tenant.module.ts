@@ -3,7 +3,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { Global, Module } from '@nestjs/common';
 import { TenantService } from './tenant/tenant.service';
 
-@Global() // with global we make this module available for all others modules without need to import
+@Global()
 @Module({
   imports: [SequelizeModule.forFeature([Account])],
   providers: [TenantService],

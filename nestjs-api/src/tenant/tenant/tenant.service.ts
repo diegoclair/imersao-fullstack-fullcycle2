@@ -1,4 +1,3 @@
-
 import { InjectModel } from '@nestjs/sequelize';
 import { Account } from './../../accounts/entities/account.entity';
 import { Injectable } from '@nestjs/common';
@@ -7,9 +6,7 @@ import { Injectable } from '@nestjs/common';
 export class TenantService {
   private account: Account | null = null;
 
-  constructor(
-    @InjectModel(Account) private accountModel: typeof Account
-  ) { }
+  constructor(@InjectModel(Account) private accountModel: typeof Account) {}
 
   get tenant() {
     return this.account;

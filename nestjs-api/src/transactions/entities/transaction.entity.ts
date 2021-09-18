@@ -1,6 +1,14 @@
-import { Model, Column, Table, PrimaryKey, DataType, ForeignKey, BelongsTo } from "sequelize-typescript";
-import { Account } from "src/accounts/entities/account.entity";
-import { ToNumber } from "src/common/db/to-number.decorator";
+import { ToNumber } from '../../common/db/to-number.decorator';
+import { Account } from './../../accounts/entities/account.entity';
+import {
+  Model,
+  Column,
+  Table,
+  PrimaryKey,
+  DataType,
+  ForeignKey,
+  BelongsTo,
+} from 'sequelize-typescript';
 
 export enum TransactionCategory {
   CATEGORY1 = 'category1',
@@ -14,6 +22,7 @@ export enum TransactionType {
   CREDIT = 'credit',
   DEBIT = 'debit',
 }
+
 export const TransactionTypeList: string[] = Object.values(TransactionType);
 
 @Table({
@@ -21,10 +30,7 @@ export const TransactionTypeList: string[] = Object.values(TransactionType);
   createdAt: 'created_at',
   updatedAt: 'updated_at',
 })
-
-
 export class Transaction extends Model {
-
   @PrimaryKey
   @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4 })
   id: string;
@@ -49,9 +55,13 @@ export class Transaction extends Model {
   type: TransactionType;
 
   @ForeignKey(() => Account)
-  @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4, allowNull: false })
-  account_id: string
+  @Column({
+    type: DataType.UUID,
+    defaultValue: DataType.UUIDV4,
+    allowNull: false,
+  })
+  account_id: string;
 
   @BelongsTo(() => Account)
-  account: Account
+  account: Account;
 }

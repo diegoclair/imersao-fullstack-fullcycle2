@@ -1,25 +1,15 @@
-import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import React from 'react';
+import { GetServerSideProps } from "next";
 
-interface serverPageProps {
-    
-}
-
-const serverPage: React.FC<serverPageProps> = (props: any) => {
-    return (
-        <div>
-            Server {props.name}
-        </div>
-    );
+const ServerPage = (props: any) => {
+  return <div>Server {props.name}</div>;
 };
 
-export default serverPage;
+export default ServerPage;
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  
-    return{
-        props: {
-            name: 'Diego Clair'
-        }
-    }
+  return {
+    props: {
+      name: "Luiz Carlos",
+    },
+  };
 };

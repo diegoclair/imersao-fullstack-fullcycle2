@@ -1,5 +1,5 @@
 import { IsISO8601, IsNotEmpty } from 'class-validator';
-import { IsAfter } from 'src/common/validators/is-after.rule';
+import { IsAfter } from '../../common/validators/is-after.rule';
 
 export class CreateReportDto {
   @IsISO8601()
