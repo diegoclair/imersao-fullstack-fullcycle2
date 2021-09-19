@@ -79,7 +79,7 @@ const TransactionsPage: NextPage<TransactionsPageProps> = (props) => {
         <SortingState
           defaultSorting={[{ columnName: "created_at", direction: "desc" }]}
         />
-        <SearchState defaultValue="Conta de luz" />
+        <SearchState defaultValue="" />
         <PagingState defaultCurrentPage={0} pageSize={5} />
         <TableHeaderRow showSortingControls />
         <IntegratedFiltering />
